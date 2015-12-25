@@ -1,0 +1,1 @@
+../node_modules/targaryen/bin/targaryen rules.json tests.json
