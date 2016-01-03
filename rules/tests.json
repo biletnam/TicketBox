@@ -15,7 +15,7 @@
                 "reservation": {
                   "timestamp": 1234567890,
                   "uid": "uid1",
-                  "type": "lock"
+                  "kind": "lock"
                 },
                 "name": "Seat One"
               },
@@ -26,7 +26,7 @@
                 "reservation": {
                   "timestamp": 1234567890,
                   "uid": "uid2",
-                  "type": "reservation"
+                  "kind": "reservation"
                 },
                 "name": "Seat Three"
               }
@@ -135,8 +135,8 @@
     "events/e1/blocks/b1/seats/s2/reservation": {
       "canRead": [ "anonymous1", "anonymous2" ],
       "canWrite": [
-        { "auth": "anonymous1", "data": { "timestamp": 123456, "uid": "uid1", "type": "lock" } },
-        { "auth": "anonymous2", "data": { "timestamp": 123456, "uid": "uid2", "type": "lock" } } ]
+        { "auth": "anonymous1", "data": { "timestamp": 123456, "uid": "uid1", "kind": "lock" } },
+        { "auth": "anonymous2", "data": { "timestamp": 123456, "uid": "uid2", "kind": "lock" } } ]
     },
     "orders": {
       "cannotRead": [ "anonymous1", "anonymous2" ],
@@ -178,9 +178,11 @@
       "canRead": [ "admin", "boxoffice" ],
       "canWrite": [
         { "auth": "admin", "data": { "name": "NewName", "email": "new@example.com" } },
+        { "auth": "admin", "data": { "kind": "admin" } },
         { "auth": "boxoffice", "data": { "name": "NewName", "email": "new@example.com" } }
       ],
       "cannotWrite": [
+        { "auth": "boxoffice", "data": { "kind": "admin" } },
         { "auth": "boxoffice", "data": { "name": "NewName", "email": "new_example.com" } },
         { "auth": "anonymous1", "data": { "name": "NewName", "email": "new@example.com" } },
         { "auth": "anonymous2", "data": { "name": "NewName", "email": "new@example.com" } }

@@ -47,11 +47,23 @@
                   },
                   "kind": {
                     ".validate": "newData.isString() && (newData.val() === 'lock' || newData.val() === 'reservation')"
+                  },
+                  "$other": {
+                    ".validate": false
                   }
+                },
+                "$other": {
+                  ".validate": false
                 }
               }
+            },
+            "$other": {
+              ".validate": false
             }
           }
+        },
+        "$other": {
+          ".validate": false
         }
       }
     },
@@ -87,8 +99,14 @@
             },
             "cost": {
               ".validate": "newData.isString() && (newData.val() === 'normal' || newData.val() === 'reduced')"
+            },
+            "$other": {
+              ".validate": false
             }
           }
+        },
+        "$other": {
+          ".validate": false
         }
       }
     },
@@ -101,6 +119,9 @@
         },
         "email": {
           ".validate": "newData.isString() && newData.val().matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$/i)"
+        },
+        "kind": {
+          ".validate": "auth !== null && auth.provider == 'password' && root.child('users').child(auth.uid).child('kind').val() === 'admin' && newData.isString() && (newData.val() === 'admin' || newData.val() === 'boxoffice')"
         },
         "$other": {
           ".validate": false
